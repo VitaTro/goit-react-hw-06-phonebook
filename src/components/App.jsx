@@ -22,7 +22,7 @@ export const App = () => {
 
   const checkContact = newContact => {
     const isInBase = contacts.some(
-      contact => contact.name.toLowerCase() === newContact.toLowerCase()
+      contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
     return isInBase;
   };
@@ -32,6 +32,8 @@ export const App = () => {
       let actualContacts = contacts;
       actualContacts.push(newContact);
       setContacts([...actualContacts]);
+      // const updatedContacts = [...contacts, newContact];
+      // setContacts(updatedContacts);
     } else {
       alert(`${newContact.name} is already in contacts`);
     }
