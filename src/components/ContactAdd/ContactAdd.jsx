@@ -23,6 +23,7 @@ export const ContactAdd = () => {
       dispatch(addContact(name, number));
       const updatedContacts = [...contacts, { name, number }];
       localStorage.setItem('Contacts', JSON.stringify(updatedContacts));
+      // dispatch(updateContacts(updatedContacts));
       form.reset();
     } else {
       alert(`${name} is use. Try another name.`);
