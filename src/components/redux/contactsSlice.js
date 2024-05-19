@@ -5,10 +5,10 @@ let contactsInitialSlice = localStorage.getItem('Contacts')
   ? JSON.parse(localStorage.getItem('Contacts'))
   : [];
 
-if (localStorage.getItem('Contacts')) {
-  const savedContacts = JSON.parse(localStorage.getItem('Contacts'));
-  contactsInitialSlice = [...savedContacts];
-}
+// if (localStorage.getItem('Contacts')) {
+//   const savedContacts = JSON.parse(localStorage.getItem('Contacts'));
+//   contactsInitialSlice = [...savedContacts];
+// }
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialSlice,
