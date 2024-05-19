@@ -6,7 +6,7 @@ import css from './ContactAdd.module.css';
 
 export const ContactAdd = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const allContacts = useSelector(getContacts);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -16,12 +16,12 @@ export const ContactAdd = () => {
     const number = form.elements.number.value;
     // const id = nanoid();
     // props.onSubmit({ id, name, number });
-    const isInBase = contacts.some(
+    const isInBase = allContacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
     if (!isInBase) {
       dispatch(addContact(name, number));
-      const updatedContacts = [...contacts, { name, number }];
+      const updatedContacts = [...allContacts, { name, number }];
       localStorage.setItem('Contacts', JSON.stringify(updatedContacts));
       // dispatch(updateContacts(updatedContacts));
       form.reset();
