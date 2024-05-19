@@ -14,16 +14,22 @@ export const ContactAdd = () => {
     const form = e.currentTarget;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
+    // dispatch(addContact(name, number));
+    form.reset();
     // const id = nanoid();
     // props.onSubmit({ id, name, number });
     const isInBase = allContacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
+
     if (!isInBase) {
       dispatch(addContact(name, number));
-      const updatedContacts = [...allContacts, { name, number }];
-      localStorage.setItem('Contacts', JSON.stringify(updatedContacts));
-      // dispatch(updateContacts(updatedContacts));
+
+      // const updatedContacts = [...allContacts, { name, number }];
+      // localStorage.setItem('Contacts', JSON.stringify(updatedContacts));
+
+      // dispatch(updatedContacts(updatedContacts));
+      // return;
       form.reset();
     } else {
       alert(`${name} is use. Try another name.`);
@@ -71,8 +77,3 @@ export const ContactAdd = () => {
     </div>
   );
 };
-
-// ContactAdd.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
-// export default ContactAdd;

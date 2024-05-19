@@ -12,6 +12,8 @@ export const ContactList = () => {
 
   const handleDelete = id => {
     dispatch(deleteContact(id));
+    // ContactList.reset();
+    // dispatch(allContacts);
   };
   const handleFilterChange = event => {
     const searchValue = event.target.value.toLowerCase();
@@ -54,9 +56,3 @@ export const ContactList = () => {
     </div>
   );
 };
-
-// ContactList.propTypes = {
-//   contacts: PropTypes.array.isRequired,
-//   deleteFunction: PropTypes.func.isRequired,
-// };
-// export default ContactList;
