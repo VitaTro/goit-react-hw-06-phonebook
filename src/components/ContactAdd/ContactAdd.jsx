@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import { addContact } from 'components/redux/contactsSlice';
 import { getContacts } from 'components/redux/state';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,30 +5,18 @@ import css from './ContactAdd.module.css';
 
 export const ContactAdd = () => {
   const dispatch = useDispatch();
-  const allContacts = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
 
   const handleSubmit = e => {
     e.preventDefault();
-
     const form = e.currentTarget;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
-    // dispatch(addContact(name, number));
-    form.reset();
-    // const id = nanoid();
-    // props.onSubmit({ id, name, number });
-    const isInBase = allContacts.some(
+    const isInBase = contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
-
     if (!isInBase) {
       dispatch(addContact(name, number));
-
-      // const updatedContacts = [...allContacts, { name, number }];
-      // localStorage.setItem('Contacts', JSON.stringify(updatedContacts));
-
-      // dispatch(updatedContacts(updatedContacts));
-      // return;
       form.reset();
     } else {
       alert(`${name} is use. Try another name.`);

@@ -1,18 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-let contactsInitialSlice = localStorage.getItem('Contacts')
-  ? JSON.parse(localStorage.getItem('Contacts'))
-  : [];
+let contactsInitialState = [];
 
-// закоментувала якщо, бо що перший варіант, що другий роблять одне і те ж.
-// if (localStorage.getItem('Contacts')) {
-//   const savedContacts = JSON.parse(localStorage.getItem('Contacts'));
-//   contactsInitialSlice = [...savedContacts];
-// }
+if (localStorage.getItem('Contacts')) {
+  const savedContacts = JSON.parse(localStorage.getItem('Contacts'));
+  contactsInitialState = [...savedContacts];
+}
+
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: contactsInitialSlice,
+  initialState: contactsInitialState,
   reducers: {
     addContact: {
       reducer(state, action) {
